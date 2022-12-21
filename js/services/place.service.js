@@ -61,11 +61,11 @@ function _createPlace({name, lat, lng}) {
 }
 
 function getPlaceById(placeId) {
-    return storageService.get(PLACE_KEY, placeId)
+    return utilService.loadFromStorage(PLACE_KEY, placeId)
 }
 
 function savePlace(place){
-    return storageService.put(PLACE_KEY, place)
+    return utilService.saveToStorage(PLACE_KEY, _createPlace(place))
 }
 
 function removePlace(placeId){
