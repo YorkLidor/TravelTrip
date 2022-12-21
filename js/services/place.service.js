@@ -1,4 +1,5 @@
-import { utilService } from './services/storageService.service.js'
+import { utilService } from './util.service.js'
+import { storageService } from './async-storage.service.js'
 
 const PLACE_KEY = 'placeDB'
 _createPlaces()
@@ -41,7 +42,7 @@ function _createDemoPlaces() {
         lat: 51.509865,
         lng: -0.118092
     }]
-    utilService.saveToStorage(PLACE_KEY, places)
+    storageService.saveToStorage(PLACE_KEY, places)
 }
 
 function _createPlace(name, lat, lng) {

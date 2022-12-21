@@ -1,5 +1,6 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
+import { placeService } from './services/place.service.js'
 import { placeController } from './place.controller.js'
 
 
@@ -16,7 +17,7 @@ function onInit() {
         })
         .catch(() => console.log('Error: cannot init map'))
     
-    locService.getLocs()
+        placeService.query()
     .then((places)=> placeController.renderPlaces(places))
     
 }
