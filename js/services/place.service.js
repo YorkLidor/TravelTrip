@@ -26,7 +26,7 @@ function _createPlaces(){
 }
 
 function _createDemoPlaces() {
-    const places = [{
+    const demoPlaces = [{
         name: 'Paris',
         lat: 48.864716,
         lng: 2.349014
@@ -42,17 +42,19 @@ function _createDemoPlaces() {
         lat: 51.509865,
         lng: -0.118092
     }]
+
+    const places = demoPlaces.map(place => _createPlace(place))
     utilService.saveToStorage(PLACE_KEY, places)
 }
 
-function _createPlace(name, lat, lng) {
+function _createPlace({name, lat, lng}) {
     const randomPlace = utilService.randomLocationName()
     return {
         id: utilService.makeId(),
         name: name || randomPlace.name,
         lat: lat || randomPlace.lat,
         lng: lng || randomPlace.lng,
-        weather,
+        // weather,
         createdAt: utilService.randomPastTime(),
         updatedAt: utilService.randomPastTime()
     }
