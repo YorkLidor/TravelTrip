@@ -15,8 +15,8 @@ function renderPlaces(places) {
     var strHtmls = places.map(place => `
     <div class="location-card">
         <h5 class="location-title">${place.name}</h5>
-        <button class="delete-btn" onclick="onGoToPlace(${place.lat},${place.lng})">Go</button>
-        <button class="go-btn" data-id="${place.id}" onclick="onRemoveLocation(this)">Delete</button>
+        <button class="go-btn" onclick="onGoToPlace(${place.lat},${place.lng})">Go</button>
+        <button class="delete-btn" data-id="${place.id}" onclick="onRemoveLocation(this)">Delete</button>
     </div>
     `)
 

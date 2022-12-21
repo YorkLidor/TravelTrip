@@ -35,17 +35,39 @@ button:active{
 }
 
 .main-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-bottom: 1rem;
-}
-
-.main-header>*{
-    margin-bottom: .5rem;
+    max-width: 1060px;
+    margin: 0 auto;
 }
 
 .main-header .btn-user-pos{
     color: whitesmoke;
     background-color: #ae2012;
     font-weight: 600;
+}
+
+.main-header form input{
+    padding: .5em 1em;
+    border-radius: 2em;
+}
+
+.delete-btn{
+    color: whitesmoke;
+    background-color: #ae2012;
+}
+
+.go-btn{
+    color: whitesmoke;
+    background-color: #0a9396;
+}
+
+.btn-search{
+    color: whitesmoke;
+    background-color: rgba(238, 155, 0, 0.822);
+
 }
 
 .locations-container {
