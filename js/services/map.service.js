@@ -1,7 +1,10 @@
+import { placeController } from '../place.controller.js'
+import { placeService } from './place.service.js'
+
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
 }
 
 
@@ -20,6 +23,19 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             })
             console.log('Map!', gMap)
         })
+        .then(setMapListiner)
+
+}
+
+function setMapListiner() {
+    google.maps.event.addListener(gMap, "click", function (event) {
+        var lat = event.latLng.lat()
+        var lng = event.latLng.lng()
+        const name = prompt('Enter Location Name')
+        const newLocation = placeService.savePlace({name, lat, lng })
+        placeController.renderPlaces()
+        // placeMarker(event.latLng, gMap, newLocation.id)
+    })
 }
 
 function addMarker(loc) {

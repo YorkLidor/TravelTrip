@@ -1,9 +1,13 @@
+import { mapService } from './services/map.service.js'
+import { placeService } from './services/place.service.js'
+
 
 export const placeController = {
     renderPlaces,
 }
 
 function renderPlaces(places){
+    console.log('places:', places)
     var strHtmls = places.map(place => `
     <div class="location-card">
         <h5 class="location-title">${place.name}</h5>
@@ -16,21 +20,3 @@ function renderPlaces(places){
 }
 
 
-// function addLocation(lat, lon, name) {
-//     //matan
-//     var newLocation = _createPlace(lat, lon, name)
-//     //glocations?
-//     gLocations.unshift(newLocation)
-//     //save?
-//     _saveLocationsToStorage()
-//     return newLocation
-// }
-
-// google.maps.event.addListener(gMap, "click", function (event) {
-//     var latitude = event.latLng.lat();
-//     var longitude = event.latLng.lng();
-//     const locationName = prompt('Enter Location Name')
-//     const newLocation = addLocation(latitude, longitude, locationName)
-//     renderPlaces()
-//     placeMarker(event.latLng, gMap, newLocation.id)
-// })

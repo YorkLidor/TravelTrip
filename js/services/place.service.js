@@ -11,7 +11,6 @@ export const placeService = {
     removePlace,
 }
 
-
 function query() {
     return storageService.query(PLACE_KEY)
         .then(places => 
@@ -38,11 +37,12 @@ function _createDemoPlaces() {
         lng: 4.897070
     },
     {
+        
         name: 'London',
         lat: 51.509865,
         lng: -0.118092
     }]
-    storageService.saveToStorage(PLACE_KEY, places)
+    utilService.saveToStorage(PLACE_KEY, places)
 }
 
 function _createPlace(name, lat, lng) {
