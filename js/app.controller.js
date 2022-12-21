@@ -1,5 +1,7 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
+import { placeController } from './place.controller.js'
+
 
 window.onload = onInit
 window.onAddMarker = onAddMarker
@@ -13,6 +15,10 @@ function onInit() {
             console.log('Map is ready')
         })
         .catch(() => console.log('Error: cannot init map'))
+    
+    locService.getLocs()
+    .then((places)=> placeController.renderPlaces(places))
+    
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
