@@ -65,7 +65,6 @@ function getPlaceById(placeId) {
 }
 
 function savePlace(place){
-    console.log('place from savePlace:', place)
     return storageService.post(PLACE_KEY, _createPlace(place))
 }
 

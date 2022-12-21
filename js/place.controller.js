@@ -1,17 +1,15 @@
 import { mapService } from './services/map.service.js'
 import { placeService } from './services/place.service.js'
-// import { placeService } from './services/place.service.js'
-
 
 export const placeController = {
     renderPlaces,
     onGoToPlace,
     onRemoveLocation,
     onPlaceSearch,
+    onCopyLocation,
 }
 
 function renderPlaces(places) {
-    console.log('places:', places)
     var strHtmls = places.map(place => `
     <div class="location-card">
         <h5 class="location-title">${place.name}</h5>
@@ -44,13 +42,34 @@ function onPlaceSearch(ev) {
 
 
     mapService.searchPlaceCords(placeName).then((cords) => {
-        console.log('corsssssds:', cords)
         const { lat, lng } = cords
         onGoToPlace(lat, lng)
         placeService.savePlace({ name: placeName, lat, lng })
         .then(() => placeService.query().then(placeController.renderPlaces))
 
     })
+}
 
+function onCopyLocation(){
+    setLang(lang)
+    if (lang === 'he') {
+        document.body.classList.add('rtl')
+    }else {
+        document.body.classList.remove('rtl')
+    } 
+    const queryStringParams = `?language=${lang}`
+    const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + queryStringParams
+    window.history.pushState({ path: newUrl }, '', newUrl)
+    renderbooks()
+    renderCards()
+}
 
+function renderFilterByQueryStringParams() {
+    const queryStringParams = new URLSearchParams(window.location.search)
+    const lanParams = queryStringParams.get('lan') || '' 
+    const lngParams = queryStringParams.get('lng') || '' 
+    
+    if (!filterBy) return
+    document.querySelector('.select-lang').value = filterBy
+    onSetLang(filterBy)
 }
