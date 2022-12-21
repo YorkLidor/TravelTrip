@@ -1,10 +1,11 @@
-import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 import { placeService } from './services/place.service.js'
 import { placeController } from './place.controller.js'
 
 
 window.onload = onInit
+window.onGoToPlace = placeController.onGoToPlace
+window.onRemoveLocation = placeController.onRemoveLocation
 window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
@@ -19,6 +20,7 @@ function onInit() {
 
     placeService.query()
         .then((places) => placeController.renderPlaces(places))
+    
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -57,3 +59,4 @@ function onPanTo() {
     console.log('Panning the Map')
     mapService.panTo(35.6895, 139.6917)
 }
+

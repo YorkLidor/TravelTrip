@@ -4,7 +4,7 @@ import { placeService } from './place.service.js'
 export const mapService = {
     initMap,
     addMarker,
-    panTo,
+    setLocation,
 }
 
 
@@ -27,14 +27,25 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
 
 }
 
+function setLocation(latLng) {
+    gMap.panTo(latLng, gMap)
+}
+
 function setMapListiner() {
     google.maps.event.addListener(gMap, "click", function (event) {
         var lat = event.latLng.lat()
         var lng = event.latLng.lng()
         const name = prompt('Enter Location Name')
-        const newLocation = placeService.savePlace({name, lat, lng })
-        placeController.renderPlaces()
-        // placeMarker(event.latLng, gMap, newLocation.id)
+        placeService.savePlace({ name, lat, lng }).then((place) => {
+            placeMarker(event.latLng, gMap, place.id)
+            placeService.query()
+                .then((places) => {
+                    placeController.renderPlaces(places)
+                }
+                )
+        }
+        )
+
     })
 }
 
@@ -45,6 +56,14 @@ function addMarker(loc) {
         title: 'Hello World!'
     })
     return marker
+}
+
+function placeMarker(latLng, gMap, locationId) {
+    var marker = new google.maps.Marker({
+        position: latLng,
+        map: gMap,
+    })
+    // gMarkers.push({locationId,marker})
 }
 
 function panTo(lat, lng) {

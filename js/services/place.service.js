@@ -65,7 +65,8 @@ function getPlaceById(placeId) {
 }
 
 function savePlace(place){
-    return utilService.saveToStorage(PLACE_KEY, _createPlace(place))
+    console.log('place from savePlace:', place)
+    return storageService.post(PLACE_KEY, _createPlace(place))
 }
 
 function removePlace(placeId){
