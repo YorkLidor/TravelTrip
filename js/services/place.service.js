@@ -27,7 +27,7 @@ function _createPlaces(){
 }
 
 function _createDemoPlaces() {
-    const places = [{
+    const demoPlaces = [{
         name: 'Paris',
         lat: 48.864716,
         lng: 2.349014
@@ -42,7 +42,9 @@ function _createDemoPlaces() {
         lat: 51.509865,
         lng: -0.118092
     }]
-    storageService.saveToStorage(PLACE_KEY, places)
+
+    const places = demoPlaces.map(place => _createPlace(place))
+    utilService.saveToStorage(PLACE_KEY, places)
 }
 
 function _createPlace(name, lat, lng) {
