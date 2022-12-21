@@ -62,6 +62,7 @@ function _createPlace({name, lat, lng}) {
 
 function getPlaceById(placeId) {
     return utilService.loadFromStorage(PLACE_KEY, placeId)
+    .find(place => place.id === placeId )
 }
 
 function savePlace(place){

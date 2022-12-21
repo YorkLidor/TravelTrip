@@ -7,7 +7,7 @@ window.onload = onInit
 window.onGoToPlace = placeController.onGoToPlace
 window.onPlaceSearch = placeController.onPlaceSearch
 window.onRemoveLocation = placeController.onRemoveLocation
-window.onCopyLocation() = placeController.onCopyLocation
+window.onCopyLocation = placeController.onCopyLocation
 
 window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
@@ -16,12 +16,14 @@ window.onGetUserPos = onGetUserPos
 
 function onInit() {
     mapService.initMap()
-        .then(() => {
+    .then(() => {
+            placeController.renderMapByQueryParams()
         })
         .catch(() => console.log('Error: cannot init map'))
 
     placeService.query()
         .then((places) => placeController.renderPlaces(places))
+
     
 }
 
