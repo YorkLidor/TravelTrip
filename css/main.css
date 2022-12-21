@@ -74,5 +74,6 @@ button:active{
 
 #map{
     max-width: 1060px;
-    margin: 0 auto;
+    margin: 1em auto;
+    border-radius: 1em;
 }
