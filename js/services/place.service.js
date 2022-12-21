@@ -47,14 +47,14 @@ function _createDemoPlaces() {
     utilService.saveToStorage(PLACE_KEY, places)
 }
 
-function _createPlace(name, lat, lng) {
+function _createPlace({name, lat, lng}) {
     const randomPlace = utilService.randomLocationName()
     return {
         id: utilService.makeId(),
         name: name || randomPlace.name,
         lat: lat || randomPlace.lat,
         lng: lng || randomPlace.lng,
-        weather,
+        // weather,
         createdAt: utilService.randomPastTime(),
         updatedAt: utilService.randomPastTime()
     }
