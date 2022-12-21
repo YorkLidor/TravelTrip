@@ -15,12 +15,22 @@ function renderPlaces(places){
     document.querySelector('.places-container').innerHTML = strHtmls.join('')
 }
 
+
+// function addLocation(lat, lon, name) {
+//     //matan
+//     var newLocation = _createPlace(lat, lon, name)
+//     //glocations?
+//     gLocations.unshift(newLocation)
+//     //save?
+//     _saveLocationsToStorage()
+//     return newLocation
+// }
+
 // google.maps.event.addListener(gMap, "click", function (event) {
 //     var latitude = event.latLng.lat();
 //     var longitude = event.latLng.lng();
 //     const locationName = prompt('Enter Location Name')
 //     const newLocation = addLocation(latitude, longitude, locationName)
-//     console.log('newLocation:', newLocation)
 //     renderPlaces()
 //     placeMarker(event.latLng, gMap, newLocation.id)
 // })
