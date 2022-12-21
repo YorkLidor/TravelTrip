@@ -5,6 +5,7 @@ export const mapService = {
     initMap,
     addMarker,
     setLocation,
+    searchPlaceCords,
 }
 
 
@@ -85,3 +86,12 @@ function _connectGoogleApi() {
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
 }
+
+function searchPlaceCords(placeName) {
+    var api = `https://maps.googleapis.com/maps/api/geocode/json?address=${placeName}&key=AIzaSyD4YPH5GCrczJkbL9WWpkXj3GRoSIRovCY`
+    return fetch(api)
+        .then((response) => response.json())
+        .then((data) => data.results[0].geometry.location)
+
+}
+
